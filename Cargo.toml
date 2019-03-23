@@ -1,0 +1,8 @@
+[package]
+name = "stdweb_example"
+version = "0.1.0"
+authors = ["Travis Haley <thaley@dlr360.com>"]
+edition = "2018"
+
+[dependencies]
+stdweb = "0.4.15"
