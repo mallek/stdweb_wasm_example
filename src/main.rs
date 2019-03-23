@@ -39,12 +39,18 @@ fn main() {
         }
     });
 
-    web::window().add_event_listener(|event: MouseDownEvent| {
+    web::window().add_event_listener(move |event: MouseDownEvent| {
         if on_mouse_click(
             event.button(),
             true,
             (event.client_x() as f64, event.client_y() as f64),
         ) {
+            draw_box(
+                &ctx,
+                "orange",
+                (event.client_x() as f64, event.client_y() as f64),
+                (10.0, 10.0),
+            );
             event.prevent_default();
         }
     });
@@ -56,17 +62,6 @@ fn main() {
             (event.client_x() as f64, event.client_y() as f64),
         ) {
             event.prevent_default();
-        }
-    });
-
-    web::window().add_event_listener(move |event: MouseMoveEvent| {
-        if on_mouse_move((event.client_x() as f64, event.client_y() as f64)) {
-            draw_box(
-                &ctx,
-                "orange",
-                (event.client_x() as f64, event.client_y() as f64),
-                (10.0, 10.0),
-            );
         }
     });
 
@@ -105,6 +100,7 @@ fn on_mouse_click(btn: MouseButton, is_pressed: bool, position: (f64, f64)) -> b
         " pressed: ",
         is_pressed
     );
+
     true
 }
 
